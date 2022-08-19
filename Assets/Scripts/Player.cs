@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 5.0f;
+    public GameObject projectilePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,12 @@ public class Player : MonoBehaviour
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        }
+
 
     }
 }
