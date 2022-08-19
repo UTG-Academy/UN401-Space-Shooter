@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Player : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject explosionPrefab;
     public int health = 3;
+    public GameObject healthUI;
+
 
 
 
@@ -20,6 +23,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthUI.GetComponent<TextMeshProUGUI>().text = "Health: " + health;
+
         if (Input.GetKey(KeyCode.W) && transform.position.y < 4.2f)
         {
             transform.Translate(Vector2.up * speed * Time.deltaTime);
