@@ -41,6 +41,15 @@ public class Player : MonoBehaviour
             Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         }
 
-
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Enemy")
+        {
+            print("I Hit an Enemy!");
+            Destroy(gameObject);
+        }
+    }
+
 }
