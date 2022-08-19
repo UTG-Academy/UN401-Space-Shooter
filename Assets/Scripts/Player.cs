@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float speed = 5.0f;
     public GameObject projectilePrefab;
     public GameObject explosionPrefab;
+    public int health = 3;
+
 
 
     // Start is called before the first frame update
@@ -50,9 +52,13 @@ public class Player : MonoBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
-            print("I Hit an Enemy!");
-            Destroy(gameObject);
+            health = health - 1;
+            Destroy(coll.gameObject);
+            if (health <= 0)
+            {
+                Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
+                Destroy(gameObject);
+            }
         }
     }
 
